@@ -1,15 +1,27 @@
 <?php
 
 $config = [
-    'id' => 'basic',
+    'id' => 'app',
+    'defaultRoute'=>'main/default/index',
     'components' => [
+        'user' => [
+            'identityClass' => 'app\modules\user\models\User',
+            'enableAutoLogin' => true,
+            'loginUrl'=>['user/default/login'],
+        ],
+        /*
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+        */
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'main/default/error',
         ],
+        'request'=>[
+            'cookieValidationKey' => '',
+        ],
+        
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
